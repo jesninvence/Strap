@@ -7,11 +7,9 @@
     position: relative;
 }
 
-/* .navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-} */
+.navbar {
+    transition: 0.4s;
+}
 
 .navbar-nav li a {
     position: relative;
