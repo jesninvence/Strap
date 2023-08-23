@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg bg-black sticky-bottom">
         <div class="container-fluid">
             <section class="header">
-                <img src="img/strap logo 2.png" alt="" width="30%">
+                <img src="img/strap logo 2.png" alt="" width="35%">
             </section>
             <!-- <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navigationExercise10">
                 <span class="navbar-toggler-icon"></span>
@@ -91,33 +91,27 @@
                     <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
                     <br>
                     <p class="size">Size</p>
-                    <button class="btn-1">X-SMALL</button>
-                    <button class="btn-2">SMALL</button>
-                    <button class="btn-3">MEDIUM</button>
-                    <br><br>
-                    <button class="btn-4">LARGE</button>
-                    <button class="btn-5">X-LARGE</button>
-                    <button class="btn-6">2X-LARGE</button>
+                    <div id="sizes" class="container">
+                        <button class="active">X-SMALL</button>
+                        <button>SMALL</button>
+                        <button>MEDIUM</button>
+                        <button>LARGE</button>
+                        <button>X-LARGE</button>
+                        <button>2X-LARGE</button>
+                    </div>
                     <br><br><br>
                     <p>Quantity</p>
                     <div class="col-4">
-                        <div class="input-group mb-3" style="width: 130px;">
-                            <button class="input-group-text decrement-btn">-</button>
-                            <input type="text" class="form-control text-center input-qty bg-white" value="1" disabled>
-                            <button class="input-group-text increment-btn">+</button>
+                        <div class="input-group quantity mb-3" style="width: 130px;">
+                            <button class="input-control"> <i class="fa-solid fa-minus"></i> </button>
+                            <input id="quantity" type="text" class="form-control text-center input-qty bg-white" style="border: none;" value="1">
+                            <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
                         </div>
                     </div>
                     <br>
                     <div class="product-btn">
-                        <div class="col-12">
-                            <button onclick="addCart('Strap W-fire Logo White Tee', 850)">Add to Cart</button>
-                        </div>
-                    </div>
-                    <br><br><br>
-                    <div class="product-btn2">
-                        <div class="col-12">
-                            <button>Buy it Now</button>
-                        </div>
+                        <button onclick="addCart('Strap Slime Logo Black Tee', 850, 'img/strap t4.jpg')">Add to Cart</button>
+                        <button class="text-white bg-black">Buy it Now</button>
                     </div>
                 </div>
             </div>
@@ -198,16 +192,16 @@
                 <div class="col-3">
                     <br><br>
                     <h5>ABOUT US</h5>
-                    <p><a href="Strap_UnderConstruction.html" id="as">Store</a></p>
-                    <p><a href="Strap_UnderConstruction.html" id="as">Careers</a></p>
+                    <p><a href="Strap_UnderConstruction.html" class="as">Store</a></p>
+                    <p><a href="Strap_UnderConstruction.html" class="as">Careers</a></p>
                 </div>
                 <div class="col-3">
                     <br><br>
                     <h5>FOLLOW US</h5>
-                    <p><a href="https://www.facebook.com/strapcebu" id="as"><i class="fa-brands fa-square-facebook"></i> Facebook</a></p>
-                    <p><a href="https://www.instagram.com/strapcebu/" id="as"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
-                    <p><a href="Strap_UnderConstruction.html" id="as"><i class="fa-brands fa-twitter"></i> Twitter</a></p>
-                    <p><a href="Strap_UnderConstruction.html" id="as"><i class="fa-brands fa-tiktok"></i> Tiktok</a></p>
+                    <p><a href="https://www.facebook.com/strapcebu" class="as"><i class="fa-brands fa-square-facebook"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com/strapcebu/" class="as"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
+                    <p><a href="Strap_UnderConstruction.html" class="as"><i class="fa-brands fa-twitter"></i> Twitter</a></p>
+                    <p><a href="Strap_UnderConstruction.html" class="as"><i class="fa-brands fa-tiktok"></i> Tiktok</a></p>
                 </div>
             </div>
         </div>
@@ -227,4 +221,5 @@
 </body>
 <script src="Strap_ItemInfo.js"></script>
 <script src="Strap_CartForm.js"></script>
+<script src="main.js"></script>
 </html>

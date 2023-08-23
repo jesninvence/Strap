@@ -34,7 +34,7 @@
 .row .card:hover{
     /* transform: scale(0.9); */
     transition: 0.7s;
-    transform: scale(0.9);
+    transform: scale(1.01);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 .row .card:hover h5{
@@ -64,7 +64,7 @@
 .page-1 a:hover{
     transition: 0.7s;
     transform: scale(0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 #soldout {
@@ -86,7 +86,7 @@
 .page-2 a:hover{
     transition: 0.7s;
     transform: scale(0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .tag{
@@ -101,4 +101,13 @@
     right: 8px;
     text-align: center;
     top: 8px;
+}
+
+.as {
+    text-decoration-line: none;
+    color: rgba(218, 217, 217, 0.907);
+}
+
+.as:hover {
+    color: white;
 }

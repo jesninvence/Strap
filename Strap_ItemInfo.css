@@ -9,14 +9,15 @@
     color: white;
     font-size: 15px;
     letter-spacing: 1.7px;
-    padding: 0 10px;
+    padding: 0 !important;
+    margin: 0px 10px;
 }
 
 .navbar-nav li a:after {
     content: "";
     position: absolute;
-    background-color: gray;
-    height: 3px;
+    background-color: rgba(185, 185, 185, 0.842);
+    height: 2px;
     width: 0;
     left: 0;
     bottom: -10px;
@@ -34,9 +35,14 @@
 .row .card:hover{
     /* transform: scale(0.9); */
     transition: 0.7s;
-    transform: scale(0.9);
+    transform: scale(1.01);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
+
+#soldout {
+    text-decoration: line-through;
+}
+
 .col-3{
     width: 25%;
     padding: 10px;
@@ -68,136 +74,64 @@
     text-decoration: line-through;
 }
 
-.btn-1{
+#sizes {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.6em;
+}
+
+#sizes button {
     background-color: white;
     border: 1px solid black;
+    padding: 5px;
     color: black;
-    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    position: absolute;
 }
-.btn-1:hover{
+
+#sizes button.active {
     background-color: black;
     color: white;
     transition: 0.3s;
 }
-.btn-2{
+
+#sizes button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.quantity button {
+    border: none;
     background-color: white;
+    font-size: 10px;
+    padding: 1.5em 2em;
+    z-index: 1;
+}
+
+.quantity {
     border: 1px solid black;
-    color: black;
-    padding: 5px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-    left: 63%;
 }
-.btn-2:hover{
-    background-color: black;
-    color: white;
-    transition: 0.3s;
-}
-.btn-3{
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-    left: 72%;
-}
-.btn-3:hover{
-    background-color: black;
-    color: white;
-    transition: 0.3s;
-}
-.btn-4{
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 23px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-}
-.btn-4:hover{
-    background-color: black;
-    color: white;
-    transition: 0.3s;
-}
-.btn-5{
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 23px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-    left: 62%;
-}
-.btn-5:hover{
-    background-color: black;
-    color: white;
-    transition: 0.3s;
-}
-.btn-6{
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-    left: 72%;
-}
-.btn-6:hover{
-    background-color: black;
-    color: white;
-    transition: 0.3s;
-}
+
 .product-btn button{
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border: 1px solid black;
-    padding: 15px 140px;
+    /* border: none; */
+    width: calc(100%);
+    margin-bottom: 1em;
+    padding: 13px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    position: absolute;
 }
 .product-btn button:hover{
     transition: 0.5s;
-    transform: scale(0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-.product-btn2 button{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border: none;
-    padding: 15px 143px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-}
-.product-btn2 button:hover{
-    transition: 0.5s;
-    transform: scale(0.9);
+    transform: scale(1.01);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -215,11 +149,11 @@
     top: 8px;
 }
 
-#as {
+.as {
     text-decoration-line: none;
     color: rgba(218, 217, 217, 0.907);
 }
 
-#as:hover {
+.as:hover {
     color: white;
 }
