@@ -1,6 +1,6 @@
 #header {
     width: 100%;
-    height: 100vh;
+    height: 130vh;
     background-image: url(img/strap\ wallpaper\ 1.jpg);
     background-position: center top;
     background-size: cover;
@@ -9,6 +9,7 @@
 
 .navbar {
     transition: 0.4s;
+    z-index: 1;
 }
 
 .navbar-nav li a {
@@ -121,4 +122,64 @@
 
 .as:hover {
     color: white;
+}
+
+#Cart {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 30vw;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Cart .close {
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    top: 15px;
+    left: 15px;
+    position: absolute;
+}
+
+#shadow {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 998;
+    width: 100%;
+    opacity: 0.5;
+}
+
+.hide {
+    display: none;
+}
+
+#Cart .content {
+    text-align: center;
+}
+
+#Cart .content h3 {
+    font-weight: 350;
+}
+
+.content button {
+    background-color: black;
+    color: white;
+    padding: 10px 10px;
+}
+
+.content button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    transition: 0.5s;
 }
