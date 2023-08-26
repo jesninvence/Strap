@@ -53,6 +53,16 @@
     text-decoration: line-through;
 }
 
+.col-3{
+    width: 25%;
+    padding: 10px;
+    margin: 0px;
+}
+
+#soldout {
+    text-decoration: line-through;
+}
+
 .card-body h5{
     font-size: 18px;
 }
@@ -171,15 +181,21 @@
     font-weight: 350;
 }
 
-.content button {
+#Cart .content a {
     background-color: black;
     color: white;
     padding: 10px 10px;
+    border: none;
+    text-decoration: none;
 }
 
-.content button:hover {
+#Cart .content a:hover {
+    box-shadow: 0 0 0 1px black;
     background-color: white;
     color: black;
-    border: 1px solid black;
     transition: 0.5s;
+}
+
+.soldout, .soldout a, .soldout a:hover{
+    cursor: not-allowed;
 }

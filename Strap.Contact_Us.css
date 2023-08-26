@@ -74,6 +74,7 @@ input, textarea {
     background: transparent;
     font-size: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: brightness(60%) blur(1px);
 }
 
 iframe {
@@ -107,6 +108,7 @@ button {
     border: 1px solid rgb(255, 255, 255);
     width: 100%;
     cursor: pointer;
+    backdrop-filter: brightness(60%) blur(1px);
 }
 
 button:hover {

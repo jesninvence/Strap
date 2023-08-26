@@ -34,7 +34,7 @@
                         <a class="nav-link text-white md" href="Strap.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="Strap_Products.html">Shop</a>
+                        <a class="nav-link text-white" href="Strap_shop.html">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Strap_Collections.html">Collections</a>
@@ -82,39 +82,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-5 position-relative">
                     <br><br>
-                    <h1>Strap Clutch Logo</h1>
-                    <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
+                    <h1 id="desc">Strap Clutch Logo Tee</h1>
+                    <p class="card-price" id="price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
                     <br>
                     <p class="size">Size</p>
-                    <button class="btn-1">X-SMALL</button>
-                    <button class="btn-2">SMALL</button>
-                    <button class="btn-3">MEDIUM</button>
-                    <br><br>
-                    <button class="btn-4">LARGE</button>
-                    <button class="btn-5">X-LARGE</button>
-                    <button class="btn-6">2X-LARGE</button>
+                    <div id="sizes" class="container">
+                        <button class="active">X-SMALL</button>
+                        <button>SMALL</button>
+                        <button>MEDIUM</button>
+                        <button>LARGE</button>
+                        <button>X-LARGE</button>
+                        <button>2X-LARGE</button>
+                    </div>
                     <br><br><br>
                     <p>Quantity</p>
                     <div class="col-4">
-                        <div class="input-group mb-3" style="width: 130px;">
-                            <button class="input-group-text decrement-btn">-</button>
-                            <input type="text" class="form-control text-center input-qty bg-white" value="1" disabled>
-                            <button class="input-group-text increment-btn">+</button>
+                        <div class="input-group quantity mb-3" style="width: 130px;">
+                            <button class="input-control"> <i class="fa-solid fa-minus"></i> </button>
+                            <input id="quantity" type="text" class="form-control text-center input-qty bg-white" style="border: none;" value="1">
+                            <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
                         </div>
                     </div>
                     <br>
                     <div class="product-btn">
-                        <div class="col-12">
-                            <button onclick="addCart('Strap Clutch Logo', 850)">Add to Cart</button>
-                        </div>
-                    </div>
-                    <br><br><br>
-                    <div class="product-btn2">
-                        <div class="col-12">
-                            <button>Buy it Now</button>
-                        </div>
+                        <button onclick="addCart('Strap Slime Logo Black Tee', 850, 'img/strap t4.jpg')">Add to Cart</button>
+                        <button class="text-white bg-black">Buy it Now</button>
                     </div>
                 </div>
             </div>
@@ -162,19 +156,21 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="card bg-white h-100">
+                    <div class="card soldout bg-white h-100">
                         <a type="button" data-bs-toggle="modal" href="#" data-bs-target="#sampleModal1"><img src="img/strap t.6.jpg" width="100%"></a>
+                        <span class="tag"> Sold out </span>
                         <div class="card-body">
-                            <h5 class="card-title text-black">Strap tshirt</h5>
+                            <h5 id="soldout" class="card-title text-black">Strap tshirt</h5>
                             <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="card bg-white h-100">
+                    <div class="card soldout bg-white h-100">
                         <a type="button" data-bs-toggle="modal" href="#" data-bs-target="#sampleModal1"><img src="img/strap t10.jpg" width="100%"></a>
+                        <span class="tag"> Sold out </span>
                         <div class="card-body">
-                            <h5 class="card-title text-black">Strap tshirt</h5>
+                            <h5 id="soldout" class="card-title text-black">Strap tshirt</h5>
                             <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
                         </div>
                     </div>
@@ -199,7 +195,7 @@
                 <div class="col-3">
                     <br><br>
                     <h5>FOLLOW US</h5>
-                    href="https://www.facebook.com/strapcebu" class="as"><i class="fa-brands fa-square-facebook"></i> Facebook</a></p>
+                    <p><a href="https://www.facebook.com/strapcebu" class="as"><i class="fa-brands fa-square-facebook"></i> Facebook</a></p>
                     <p><a href="https://www.instagram.com/strapcebu/" class="as"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
                     <p><a href="Strap_UnderConstruction.html" class="as"><i class="fa-brands fa-twitter"></i> Twitter</a></p>
                     <p><a href="Strap_UnderConstruction.html" class="as"><i class="fa-brands fa-tiktok"></i> Tiktok</a></p>
@@ -220,6 +216,7 @@
         </div>
     </div>
 </body>
+<script src="main.js"></script>
 <script src="Strap_ItemInfo.js"></script>
 <script src="Strap_CartForm.js"></script>
 </html>

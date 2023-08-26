@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Strap.Contact_Us.css">
-    <title>Strap</title>
+    <link rel="stylesheet" href="Strap_Products.css">
+    <title>Document</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-black sticky-bottom">
@@ -25,9 +25,6 @@
             <section class="header">
                 <img src="img/strap logo 2.png" alt="" width="35%">
             </section>
-            <!-- <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navigationExercise10">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="collapse navbar-collapse" id="navigationExercise10">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -59,52 +56,25 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="btn btn-black" type="button" data-bs-toggle="modal" data-bs-target="#sampleModal1"><i class="fa-regular fa-user" style="color: #ffffff;"></i></i></a>
+                    <a class="btn btn-black" href="Strap_Login.html"><i class="fa-regular fa-user" style="color: #ffffff;"></i></i></a>
                 </li>
             </ul>
         </div>
     </nav>
     <br><br>
     <div class="container">
-        <div class="contact-form">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center text-white">CONTACT US</h1>
-                </div>
-                <div class="col-5">
-                    <br>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.3801583472887!2d123.89223157388318!3d10.31142986760085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99945555f8b51%3A0x3cdc03b5c5e87ad1!2sSTRAP%20FLAGSHIP%20STORE!5e0!3m2!1sen!2sph!4v1692490789032!5m2!1sen!2sph" width="450" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <br><br>
-                    <p class="text-white"><i class="fa-solid fa-location-dot"></i> - Unit 5 Century Complex, Juana Osemiña St, Cebu City</p>
-                    <p class="text-white"><i class="fa-regular fa-envelope"></i> - strapcebu@gmail.com</p>
-                    <p class="text-white"><i class="fa-solid fa-phone"></i> - (032) 353 5492</p>
-                </div>
-                <div class="col-7">
-                    <br>
-                    <div class="fill-out">
-                        <form action="">
-                            <!-- <img src="img/strap wallpaper.jpg" alt="" width="100%"> -->
-                            <div class="input-group">
-                                <input type="text" id="name" required>
-                                <label for="name">Your Name</label>
-                            </div>
-                            <div class="input-group">
-                                <input type="text" id="number" required>
-                                <label for="number">Phone No.</label>
-                            </div>
-                            <div class="input-group">
-                                <input type="email" id="email" required>
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-group">
-                                <textarea id="message" rows="8" placeholder="Your Message"></textarea>
-                                <label for="message"></label>
-                            </div>
-                            <button type="submit">SUBMIT</button>
-                        </form>
-                    </div>
-                    <br>
-                </div>
+        <div class="page-1">
+            <a href="Strap_shop.html?page=1">1</a>
+        </div>
+        <div class="page-2">
+            <a href="Strap_shop.html?page=2">2</a>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="container">
+        <div class="content">
+            <div id="products_display" class="row g-3">
+                
             </div>
         </div>
     </div>
@@ -133,6 +103,29 @@
             </div>
         </div>
     </div>
+    <div class="footer bg-black">
+        <br>
+        <div class="container bg-black text-white">
+            <form action="">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center"><i class="fa-regular fa-copyright"></i> 2023, STRAP</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="hide" id="shadow">
+    </div>
+    <div id="Cart">
+        <button class="close" onclick="hideCartElement()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="content">
+            <h3>Your cart is empty</h3>
+            <br>
+            <a href="Strap_Collections.html">Continue shopping</a>
+        </div>
+    </div>
 </body>
-<script src="main.js"></script>
+<script src="./main.js"></script>
+<script src="Strap_ItemInfo.js"></script>
 </html>

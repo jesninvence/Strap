@@ -1,5 +1,6 @@
 .navbar{
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
 .navbar-nav li a {
@@ -46,7 +47,9 @@
 .col-3{
     width: 25%;
     padding: 10px;
+    margin: 0px;
 }
+
 .other-display{
     display: flex;
     justify-content: center;
@@ -156,4 +159,181 @@
 
 .as:hover {
     color: white;
+}
+
+.soldout, .soldout a, .soldout a:hover{
+    cursor: not-allowed;
+}
+
+#Cart {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 30vw;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: 0.3s;
+}
+
+#Cart .close {
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    top: 15px;
+    left: 15px;
+    position: absolute;
+}
+
+#Cart .close:hover {
+    color: rgba(137, 137, 137, 0.761);
+}
+
+#shadow {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 998;
+    width: 100%;
+    opacity: 0.5;
+}
+
+.hide {
+    display: none;
+}
+
+#Cart .content {
+    text-align: center;
+}
+
+#Cart .content h3 {
+    font-weight: 100;
+}
+
+#Cart .content a {
+    background-color: black;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    text-decoration: none;
+}
+
+#Cart .content a:hover {
+    box-shadow: 0 0 0 1px black;
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+}
+
+#Cart .empty {
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#Cart .not-empty h3 {
+    font-weight: 300;
+}
+
+#Cart .items .tshirt-name {
+    font-size: 15px;
+}
+
+#Cart .items .price-1 {
+    font-size: 15px;
+}
+
+#Cart .items .size {
+    font-size: 15px;
+}
+
+#Cart .items .trash {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+#Cart .items {
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#Cart .items::-webkit-scrollbar {
+    width: 5px;
+}
+
+#Cart .items::-webkit-scrollbar-track {
+    background: gray;
+    border-radius: 20px;
+}
+
+#Cart .items::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 20px;
+}
+
+#Cart .not-empty {
+    padding: 20px 22px ;
+}
+
+#Cart .sizes {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Cart .left {
+    text-align: right;
+}
+
+#Cart .col-4 {
+    position: relative;
+}
+
+#Cart .items .row {
+    margin-bottom: 20px;
+}
+
+#Cart .checkout button {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    height: 50px;
+    background-color: black;
+    color: white;
+}
+
+#Cart .checkout {
+    background: white;
+    z-index: 3;
+    position: absolute;
+    padding: 0px 20px;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: 15vh;
+}
+
+#Cart .checkout > div {
+    border-top: 1px solid rgb(201, 201, 201);
+    position: relative;
+    padding: 8px 0px;
+    height: 100%;
+}
+
+#Cart .checkout > div > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Cart .not-empty h3{
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(207, 207, 207);
 }

@@ -166,15 +166,20 @@
     font-weight: 350;
 }
 
-.content button {
+#Cart .content a {
     background-color: black;
     color: white;
     padding: 10px 10px;
+    text-decoration: none;
 }
 
-.content button:hover {
+#Cart .content a:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
     transition: 0.5s;
+}
+
+.soldout, .soldout a, .soldout a:hover{
+    cursor: not-allowed;
 }
