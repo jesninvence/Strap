@@ -18,6 +18,7 @@ function transBar() {
 window.addEventListener("DOMContentLoaded", init);
 function init() {
     const path = location.pathname;
+    console.log(path)
     switch(path) {
         case "/Strap_shop.html":
             const page = location.search.slice(1).split("=")[1];
@@ -26,8 +27,9 @@ function init() {
         case "/Strap.html":
             transBar();
             break;
-        case "/Strap_Info.html":
-            displayInfo();
+        case "/Strap_ItemInfo.html":
+            const id = location.search.slice(1).split("=")[1];
+            displayInfo(id);
             break;
     }
 }
@@ -38,11 +40,11 @@ async function showProducts(page = 1) {
     products = products[page-1];
     const product_display = document.getElementById("products_display");
     let result = ``;
-    products.forEach(product => {
+    products.forEach((product,i) => {
         result += `
             <div class="col-3">
                 <div class="card ${product.soldout && "soldout"} bg-white h-100">
-                    <a type="button" data-bs-toggle="modal" href="${product.link}" data-bs-target="#sampleModal1"><img src="${product.image}" width="100%"></a>
+                    <a type="button" data-bs-toggle="modal" href="${`/Strap_ItemInfo.html?id=${i + (page - 1) * 20}`}" data-bs-target="#sampleModal1"><img src="${product.image}" width="100%"></a>
                     ${product.soldout ? `<span class="tag"> Sold out </span>` : ""} 
                     <div class="card-body">
                         <h5 ${product.soldout ? `id="soldout"` : ""} class="card-title text-black">${product.name}</h5>
@@ -55,10 +57,11 @@ async function showProducts(page = 1) {
     product_display.innerHTML = result
 }
 
-async function displayInfo(index) {
+async function displayInfo(id = 0) {
     const fetchProducts = await fetch("./products.json");
     let products = await fetchProducts.json();
-    console.log([1, 2].concat([3, 4]))
+    products = products[0].concat(products[1]);
+    let product = products[id];
 
     const sizes = document.querySelectorAll("#sizes button");
     for (let i = 0; i < sizes.length; i++) {
@@ -79,6 +82,53 @@ async function displayInfo(index) {
         const quantity = document.getElementById("quantity");
         quantity.value = Number(quantity.value) + number;
     }
+
+    (function() {
+        let main = document.getElementById("main-image");
+        main.src = product.image;
+
+        let thumbnail = document.querySelectorAll(".thumbnail");
+
+        thumbnail.forEach(
+            function(image,index){
+                image.src = product.showcase ? product.showcase[index] : "img/nothing.jpg";
+                image.addEventListener("click",
+                    function changeImage(event){
+                            main.removeAttribute("src");
+                            main.setAttribute("src", event.target.getAttribute("src"));
+                    }
+                )
+            }
+        );
+        
+        const product_name = document.querySelector(".item-info .col-5 h1");
+        product_name.innerHTML = product.name;
+
+        const product_price = document.querySelector(".item-info .col-5 .card-price");
+        product_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ` + product.price + ".00";
+
+        const large_image = document.querySelector(".product-details .col-12 img");
+        large_image.src = product.large_image || "img/nothing.jpg";
+
+        const related_container = document.getElementById("related_products");
+        let result = ``;
+        product.related_products && product.related_products.forEach(product_id => {
+            let related_product = products[product_id];
+            result += `
+            <div class="col-3">
+                <div class="card ${related_product.soldout && "soldout"} bg-white h-100">
+                    <a type="button" href="/Strap_ItemInfo.html?id=${products.indexOf(related_product)}"><img src="${related_product.image}" width="100%"></a>
+                    ${related_product.soldout ? `<span class="tag"> Sold out </span>` : ""}
+                    <div class="card-body">
+                        <h5 ${related_product.soldout ? `id="soldout"` : ""} class="card-title text-black">${related_product.name}</h5>
+                        <p class="card-price"><i class="fa-solid fa-peso-sign"></i> ${related_product.price}</p>
+                    </div>
+                </div>
+            </div>
+            `
+        });
+        related_container.innerHTML = result;
+    })();
 }
 
 function inputCart() {

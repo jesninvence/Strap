@@ -54,7 +54,7 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="btn btn-black" href="Strap_CartForm.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-black" onclick="global.showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -139,45 +139,8 @@
     <div class="container">
         <div class="content">
             <h3>RELATED PRODUCTS</h3>
-            <div class="row g-3">
-                <div class="col-3">
-                    <div class="card bg-white h-100">
-                        <a type="button" data-bs-toggle="modal" href="Strap_Tshirt3.html" data-bs-target="#sampleModal1"><img src="img/strap t3.jpg" width="100%"></a>
-                        <div class="card-body">
-                            <h5 class="card-title text-black">Strap tshirt</h5>
-                            <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card bg-white h-100">
-                        <a type="button" data-bs-toggle="modal" href="Strap_Tshirt5.html" data-bs-target="#sampleModal1"><img src="img/strap t5.jpg" width="100%"></a>
-                        <div class="card-body">
-                            <h5 class="card-title text-black">Strap tshirt</h5>
-                            <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card soldout bg-white h-100">
-                        <a type="button" data-bs-toggle="modal" href="#" data-bs-target="#sampleModal1"><img src="img/strap t.6.jpg" width="100%"></a>
-                        <span class="tag"> Sold out </span>
-                        <div class="card-body">
-                            <h5 id="soldout" class="card-title text-black">Strap tshirt</h5>
-                            <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card soldout bg-white h-100">
-                        <a type="button" data-bs-toggle="modal" href="#" data-bs-target="#sampleModal1"><img src="img/strap t10.jpg" width="100%"></a>
-                        <span class="tag"> Sold out </span>
-                        <div class="card-body">
-                            <h5 id="soldout" class="card-title text-black">Strap tshirt</h5>
-                            <p class="card-price"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-3" id="related_products">
+
             </div>
         </div>
     </div>
@@ -216,6 +179,84 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="hide" id="shadow">
+    </div>
+    <div id="Cart">
+        <button class="close" onclick="global.hideCartElement()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="not-empty">
+            <h3 class="text-center fs-2">Your cart</h3>
+            <div class="items">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="img/strap t.7.jpg" alt="" width="100%">
+                    </div>
+                    <div class="col-8 position-relative">
+                        <p class="tshirt-name">Strap Tshirt</p>
+                        <p class="price-1"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
+                        <p class="size">Size: 2XLARGE</p>
+                        <div class="input-group quantity mb-3" style="width: 130px;">
+                            <button class="input-control"> <i class="fa-solid fa-minus"></i> </button>
+                            <input id="quantity" type="text" class="form-control text-center input-qty bg-white" style="border: none;" value="1">
+                            <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
+                        </div>
+                 
+                        <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <img src="img/strap t3.jpg" alt="" width="100%">
+                    </div>
+                    <div class="col-8 position-relative">
+                        <p class="tshirt-name">Strap Tshirt</p>
+                        <p class="price-1"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
+                        <p class="size">Size: 2XLARGE</p>
+                        <div class="input-group quantity mb-3" style="width: 130px;">
+                            <button class="input-control"> <i class="fa-solid fa-minus"></i> </button>
+                            <input id="quantity" type="text" class="form-control text-center input-qty bg-white" style="border: none;" value="1">
+                            <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
+                        </div>
+                 
+                        <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <img src="img/strap t3.jpg" alt="" width="100%">
+                    </div>
+                    <div class="col-8 position-relative">
+                        <p class="tshirt-name">Strap Tshirt</p>
+                        <p class="price-1"><i class="fa-solid fa-peso-sign"></i> 850.00</p>
+                        <p class="size">Size: 2XLARGE</p>
+                        <div class="input-group quantity mb-3" style="width: 130px;">
+                            <button class="input-control"> <i class="fa-solid fa-minus"></i> </button>
+                            <input id="quantity" type="text" class="form-control text-center input-qty bg-white" style="border: none;" value="1">
+                            <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
+                        </div>
+                 
+                        <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout">
+                <div>
+                    <div>
+                        <p >Subtotal</p>
+                        <p class="text-end"><i class="fa-solid fa-peso-sign"></i> 0.00</p>
+                    </div>
+                    <button>Check out</button>
+                </div>
+            </div>
+        </div>
+        <div class="empty">
+            <div class="content">
+            <h3>Your cart is empty</h3>
+            <br>
+            <a href="Strap_Collections.html">Continue shopping</a>
+        </div>
         </div>
     </div>
 </body>
