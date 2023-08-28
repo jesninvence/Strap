@@ -51,7 +51,7 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="btn btn-black" onclick="showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-black" onclick="global.showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -119,10 +119,27 @@
     </div>
     <div id="Cart">
         <button class="close" onclick="global.hideCartElement()"><i class="fa-solid fa-xmark"></i></button>
-        <div class="content">
+        <div class="not-empty">
+            <h3 class="text-center fs-2">Your cart</h3>
+            <div class="items">
+                
+            </div>
+            <div class="checkout">
+                <div>
+                    <div>
+                        <p >Subtotal</p>
+                        <p class="text-end total-price"><i class="fa-solid fa-peso-sign"></i> 0.00</p>
+                    </div>
+                    <button>Check out</button>
+                </div>
+            </div>
+        </div>
+        <div class="empty hide">
+            <div class="content">
             <h3>Your cart is empty</h3>
             <br>
             <a href="Strap_Collections.html">Continue shopping</a>
+        </div>
         </div>
     </div>
 </body>

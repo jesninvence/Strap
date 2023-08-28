@@ -183,6 +183,24 @@
                 "name": "Strap T-shirt",
                 "price": 850.00,
                 "soldout": true
+            },
+            {
+                "image": "img/strap clutch black 1.jpg",
+                "name": "Strap Clutch Black Logo Tee",
+                "price": 850.00,
+                "soldout": false,
+                "showcase" : ["img/strap clutch black 1.jpg","img/strap clutch black 2.jpg","img/strap latest 2.jpg"],
+                "large_image" : ["img/strap latest 2.jpg"],
+                "related_products" : [0,2,3,7]
+            },
+            {
+                "image": "img/strap clutch 1.jpg",
+                "name": "Strap Clutch Logo Tee",
+                "price": 850.00,
+                "soldout": false,
+                "showcase" : ["img/strap clutch 1.jpg","img/strap clutch 2.jpg","img/strap latest.jpg","img/strap latest 1.jpg"],
+                "large_image" : ["img/strap latest 1.jpg"],
+                "related_products" : [0,2,3,7]
             }
         ]
     ]

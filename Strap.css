@@ -49,7 +49,7 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-#soldout {
+.soldout-name {
     text-decoration: line-through;
 }
 
@@ -144,9 +144,6 @@
     z-index: 999;
     transform: translateX(100%);
     transition: 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #Cart .close {
@@ -157,6 +154,10 @@
     top: 15px;
     left: 15px;
     position: absolute;
+}
+
+#Cart .close:hover {
+    color: rgba(137, 137, 137, 0.761);
 }
 
 #shadow {
@@ -178,7 +179,7 @@
 }
 
 #Cart .content h3 {
-    font-weight: 350;
+    font-weight: 100;
 }
 
 #Cart .content a {
@@ -196,6 +197,169 @@
     transition: 0.5s;
 }
 
-.soldout, .soldout a, .soldout a:hover{
-    cursor: not-allowed;
+#Cart .empty {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#Cart .not-empty h3 {
+    font-weight: 300;
+}
+
+#Cart .items .tshirt-name {
+    font-size: 15px;
+}
+
+#Cart .items .price-1 {
+    font-size: 15px;
+}
+
+#Cart .items .size {
+    font-size: 15px;
+}
+
+#Cart .items .trash {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+#Cart .items {
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#Cart .items::-webkit-scrollbar {
+    width: 5px;
+}
+
+#Cart .items::-webkit-scrollbar-track {
+    background: gray;
+    border-radius: 20px;
+}
+
+#Cart .items::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 20px;
+}
+
+#Cart .not-empty {
+    padding: 20px 22px ;
+}
+
+#Cart .sizes {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Cart .left {
+    text-align: right;
+}
+
+#Cart .col-4 {
+    position: relative;
+}
+
+#Cart .items .row {
+    margin-bottom: 20px;
+}
+
+#Cart .checkout button {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    height: 50px;
+    background-color: black;
+    color: white;
+}
+
+#Cart .checkout {
+    background: white;
+    z-index: 3;
+    position: absolute;
+    padding: 0px 20px;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: 15vh;
+}
+
+#Cart .checkout > div {
+    border-top: 1px solid rgb(201, 201, 201);
+    position: relative;
+    padding: 8px 0px;
+    height: 100%;
+}
+
+#Cart .checkout > div > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Cart .not-empty h3{
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+
+.quantity button {
+    border: none;
+    background-color: white;
+    font-size: 10px;
+    padding: 1.5em 2em;
+    z-index: 1;
+}
+
+.quantity button:disabled {
+    cursor :not-allowed;
+}
+
+.quantity {
+    border: 1px solid black;
+    width: 9em;
+}
+
+.quantity-container {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.quantity-container:focus {
+    background-color: black;
+}
+
+.target-quantity {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    text-align: center;
+}
+
+.target-quantity:focus   {
+    border: 1px solid black;
+    outline: 1px solid black;
+    box-shadow: 0 0 0 5px white;
+    outline-offset: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.target-quantity::-webkit-outer-spin-button,
+.target-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.target-quantity[type=number] {
+  -moz-appearance: textfield;
+}       
