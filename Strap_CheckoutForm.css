@@ -1,0 +1,29 @@
+.container .proceed {
+    padding: 10px 10px;
+    width: 100%;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.container .proceed:hover {
+    transition: 0.7s;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+}
+
+.container .proceed i {
+    transition: transform 1s;
+}
+
+.container .proceed:hover i {
+    transform: translateX(100%);
+}
+
+@keyframes move {
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
