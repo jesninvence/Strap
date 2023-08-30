@@ -34,7 +34,7 @@
 .row .card:hover{
     /* transform: scale(0.9); */
     transition: 0.7s;
-    transform: scale(0.9);
+    transform: scale(1.01);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 .row .card:hover h5{

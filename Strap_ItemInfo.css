@@ -353,6 +353,15 @@
     height: 50px;
     background-color: black;
     color: white;
+    border: none;
+}
+
+#Cart .checkout button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+    transition: 0.7s;
+    border: none;
 }
 
 #Cart .checkout {
