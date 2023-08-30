@@ -23,6 +23,8 @@ function transBar() {
 window.addEventListener("DOMContentLoaded", init);
 
 async function init() {
+    const loader = document.querySelector("#loader-container");
+    loader.classList.remove("hide");
     //path name
     const path = location.pathname;
 
@@ -33,7 +35,13 @@ async function init() {
     global.all_products = products[0].concat(products[1]);
 
     inputCart();
-    inputSearch();
+    if (path != "/Strap_CheckoutForm.html" ) 
+        inputSearch();
+    else displayCartCheckout();
+
+    setTimeout(() => {
+        loader.classList.add("hide")
+    },500);
 
     switch(path) {
         case "/Strap_shop.html":
@@ -58,7 +66,7 @@ async function showProducts(page = 1) {
     let result = ``;
     products.forEach((product,i) => {
         result += `
-            <div class="col-3">
+            <div class="col-6 col-md-3">
                 <div class="card ${product.soldout && "soldout"} bg-white h-100">
                     <a type="button" data-bs-toggle="modal" href="${`/Strap_ItemInfo.html?id=${i + (page - 1) * 20}`}" data-bs-target="#sampleModal1"><img src="${product.image}" width="100%"></a>
                     ${product.soldout ? `<span class="tag"> Sold out </span>` : ""} 
@@ -87,8 +95,8 @@ async function displayInfo(id = 0) {
     }
     function activate() {
         const activated = document.querySelector("#sizes button.active");
-        this.classList.add("active");
         activated.classList.remove("active");
+        this.classList.add("active");
     }
 
     //quantity control
@@ -127,11 +135,11 @@ async function displayInfo(id = 0) {
             thumbnail_container.appendChild(div);
         });
         
-        const product_name = document.querySelector(".item-info .col-5 h1");
+        const product_name = document.querySelector(".item-info .infos h1");
         product_name.innerHTML = product.name;
         product.soldout && product_name.classList.add("soldout-name");
 
-        const product_price = document.querySelector(".item-info .col-5 .card-price");
+        const product_price = document.querySelector(".item-info .infos .card-price");
         product_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ` + product.price + ".00";
 
         const large_image = document.querySelector(".product-details .col-12 img");
@@ -142,7 +150,7 @@ async function displayInfo(id = 0) {
         product.related_products && product.related_products.forEach(product_id => {
             let related_product = products[product_id];
             result += `
-            <div class="col-3">
+            <div class="col-6 col-md-3">
                 <div class="card ${related_product.soldout && "soldout"} bg-white h-100">
                     <a type="button" href="/Strap_ItemInfo.html?id=${products.indexOf(related_product)}"><img src="${related_product.image}" width="100%"></a>
                     ${related_product.soldout ? `<span class="tag"> Sold out </span>` : ""}
@@ -187,16 +195,18 @@ function inputCart() {
     const shadow = document.getElementById("shadow");
     const cartElement = document.getElementById("Cart");
 
-    global.showCartElement = function() {
-        cartElement.style.transform = "translateX(0)"
-        shadow.classList.remove("hide");
-        document.body.style.overflow = "hidden"
-    }
-    
-    global.hideCartElement = function() {
-        cartElement.style.transform = "translateX(100%)"
-        shadow.classList.add("hide");
-        document.body.style.overflow = "auto"
+    if (cartElement) {
+        global.showCartElement = function() {
+            cartElement.style.transform = "translateX(0)"
+            shadow.classList.remove("hide");
+            document.body.style.overflow = "hidden"
+        }
+        
+        global.hideCartElement = function() {
+            cartElement.style.transform = "translateX(100%)"
+            shadow.classList.add("hide");
+            document.body.style.overflow = "auto"
+        }
     }
 
     //cart object
@@ -227,6 +237,7 @@ function inputCart() {
     cart.display = function(disable) {
         const container = document.querySelector("#Cart .items");
         let result = ``;    
+        if (!cartElement) return;
         
         if (!Object.keys(this.items).length) {
             document.querySelector("#Cart .not-empty").classList.add("hide");
@@ -330,6 +341,37 @@ function inputSearch() {
         })
         output_container.innerHTML = outputs;
     }
+}
+
+function displayCartCheckout() {
+    const container = document.querySelector("#orders");
+    let results = ``;
+    
+    let items = global.cart.items;
+    for (let item_id in items) {
+        let product = global.all_products[Number(item_id)];
+        for (let size in items[item_id]) {
+            results += `
+            <div class="row">
+                <div class="col-4 image-container">
+                    <img src="${product.image}" alt="" width="100%">
+                    <div class="quantity">${items[item_id][size]}</div>
+                </div>
+                <div class="col-8 position-relative item-description">
+                    <p class="tshirt-name">${product.name}</p>
+                    <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${product.price}</p>
+                    <p class="size">Size: ${size}</p>
+                    <p class="total-price">P${product.price * items[item_id][size]}</p>
+                </div>
+            </div>
+            `;
+        }
+    }
+
+    container.innerHTML = results;
+
+    const sub_total = document.querySelector(".sub-total-container .total");
+    sub_total.innerHTML = `P${global.cart.total_price}.00`;
 }
 
 

@@ -50,7 +50,15 @@
 .row .card{
     border: none;
 }
-.page-1 a{
+
+.pagination-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.pagination-button a{
     background-color: rgb(247, 247, 247);
     color: black;
     border: none;
@@ -59,27 +67,9 @@
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    position: absolute;
-    left: 44%;
 }
-.page-1 a:hover{
-    transition: 0.7s;
-    transform: scale(0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-.page-2 a{
-    background-color: rgb(247, 247, 247);
-    color: black;
-    border: none;
-    padding: 10px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    position: absolute;
-    left: 51%;
-}
-.page-2 a:hover{
+
+.pagination-button a:hover{
     transition: 0.7s;
     transform: scale(0.9);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -156,7 +146,7 @@
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 #Cart .content {
@@ -348,3 +338,69 @@
 .target-quantity[type=number] {
   -moz-appearance: textfield;
 }       
+
+#loader-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.loader {
+  color: #ffffff;
+  font-size: 45px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  transform: translateZ(0);
+  animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+@keyframes mltShdSpin {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em,
+    0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+    0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 
+    0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 
+    0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, 
+    -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, 
+    -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+     -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, 
+     -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+     -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, 
+     -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 
+    0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+
+@keyframes round {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+ 
