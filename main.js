@@ -262,7 +262,7 @@ function inputCart() {
                         <div class="input-group quantity mb-3">
                             <button ${this.items[item_id][size] == 1 ? 'disabled = "true"' : ""} class="input-control decrement-button" onclick="global.cart.updateQuantity('${item_id}','${size}',-1,this)"> <i class="fa-solid fa-minus"></i> </button>
                             <div class="quantity-container">
-                                <input onchange=" global.cart.updateQuantity('${item_id}','${size}',parseInt(this.value || 1) - global.cart.items['${item_id}']['${size}'])" type="number" class="target-quantity border-0" value="${parseInt(this.items[item_id][size])}">
+                                <input onchange=" global.cart.updateQuantity('${item_id}','${size}',parseInt(this.value) - global.cart.items['${item_id}']['${size}'])" type="number" class="target-quantity border-0" value="${parseInt(this.items[item_id][size])}">
                             </div> 
                             <button class="input-control" onclick="global.cart.updateQuantity('${item_id}','${size}',1,this.previousElementSibling.previousElementSibling)"> <i class="fa-solid fa-plus"></i> </button>
                         </div>
