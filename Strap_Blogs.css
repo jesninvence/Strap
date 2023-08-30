@@ -28,6 +28,24 @@
   width: 100%;
 }
 
+/* **********Scroll Bar*********** */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
+/* ***********Scroll Bar*********** */
+
 .row .card:hover{
     /* transform: scale(0.9); */
     transition: 0.7s;

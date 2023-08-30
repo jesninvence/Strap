@@ -74,14 +74,6 @@
     position: relative;
 }
 
-.sub-total-container{
-    height: 11.5%;
-    background-color: black;
-    color: white;
-    position: relative;
-    padding-left: 1.5em;
-}
-
 .sub-total-container .total {
     position: absolute;
     right: 1.5em;
@@ -157,6 +149,29 @@
   100% { transform: rotate(360deg) }
 }
 
+.container .sub-total-container {
+  background-color: none;
+  color: black;
+  position: relative;
+}
+
+/* **********Scroll Bar*********** */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
+/* ***********Scroll Bar*********** */
 
 .items .total-ship {
   position: absolute;

@@ -324,6 +324,24 @@
     border-radius: 20px;
 }
 
+/* **********Scroll Bar*********** */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+/* ***********Scroll Bar*********** */
+
 #Cart .not-empty {
     padding: 20px 22px ;
 }
@@ -408,8 +426,24 @@
     background-size: cover;
 }
 
-#user-form  .container form {
-    
+.checkout a {
+    background-color: black;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    color: white;
+    font-size: large;
+    text-decoration: none;
+}
+
+.checkout a:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+    transition: 0.7s;
 }
 
 #user-form  .container form .container {
@@ -485,3 +519,35 @@
   100% { transform: rotate(360deg) }
 }
  
+.forgot {
+    color: black;
+}
+
+.container-1 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.sign-in {
+    background-color: black;
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    text-decoration: none;
+    padding: 10px 35px;
+}
+
+.sign-in:hover {
+    transition: 0.7s;
+    transform: scale(1.01);
+}
+
+.container-2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.create {
+    color: black;
+}

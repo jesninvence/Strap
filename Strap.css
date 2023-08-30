@@ -16,6 +16,24 @@ body {
     z-index: 1;
 }
 
+/* **********Scroll Bar*********** */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+/* ***********Scroll Bar*********** */
+
 .navbar-nav li a {
     position: relative;
     text-decoration: none;
@@ -25,6 +43,26 @@ body {
     letter-spacing: 1.7px;
     padding: 0 !important;
     margin: 0px 10px;
+}
+
+.checkout a {
+    background-color: black;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    color: white;
+    font-size: large;
+    text-decoration: none;
+}
+
+.checkout a:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+    transition: 0.7s;
 }
 
 .navbar-nav li a:after {
