@@ -33,6 +33,7 @@ async function init() {
     global.all_products = products[0].concat(products[1]);
 
     inputCart();
+    inputSearch();
 
     switch(path) {
         case "/Strap_shop.html":
@@ -91,20 +92,19 @@ async function displayInfo(id = 0) {
     }
 
     //quantity control
-    const incrementBtn = document.querySelectorAll(".input-control")[1]
-    const decrementBtn = document.querySelectorAll(".input-control")[0]
+    const incrementBtn = document.querySelectorAll(".info-quantity .input-control")[1]
+    const decrementBtn = document.querySelectorAll(".info-quantity .input-control")[0]
     incrementBtn.addEventListener("click", () => updateQuantity(1));
     decrementBtn.addEventListener("click", () => updateQuantity(-1));
     function updateQuantity(number) {
         const quantity = document.getElementById("quantity");
+        quantity.value = Number(quantity.value) + number;
         if (quantity.value <= 1 && number < 0) {
             decrementBtn.disabled = true;
             return;
         } else {
             decrementBtn.disabled = false;
         }
-        quantity.value = Number(quantity.value) + number;
-        if (quantity.value <= 0) quantity.value = 1;
     }
 
     //display information
@@ -207,7 +207,13 @@ function inputCart() {
 
     cart.updateQuantity = function(item,size,number) {
         this.items[item][size] += number; 
-        this.total_price += global.all_products[item].price * number;
+        if (this.items[item][size] < 1) {
+            this.items[item][size] = 1;
+            number = 1;
+            this.total_price = global.all_products[item].price * number;
+        } else {
+            this.total_price += global.all_products[item].price * number;
+        }
         this.display();
     }
 
@@ -218,17 +224,16 @@ function inputCart() {
         this.display();
     }
 
-    cart.display = function() {
+    cart.display = function(disable) {
         const container = document.querySelector("#Cart .items");
         let result = ``;    
-        console.log(Object.keys(this.items));
+        
         if (!Object.keys(this.items).length) {
             document.querySelector("#Cart .not-empty").classList.add("hide");
             document.querySelector("#Cart .empty").classList.remove("hide");
         } else {
             document.querySelector("#Cart .not-empty").classList.remove("hide");
             document.querySelector("#Cart .empty").classList.add("hide");
-            console.log("YOW")
         }
 
         for (let item_id in this.items) {
@@ -244,11 +249,11 @@ function inputCart() {
                         <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${product.price}</p>
                         <p class="size">Size: ${size}</p>
                         <div class="input-group quantity mb-3">
-                            <button class="input-control" onclick="global.cart.updateQuantity('${item_id}','${size}',-1)"> <i class="fa-solid fa-minus"></i> </button>
+                            <button ${this.items[item_id][size] == 1 ? 'disabled = "true"' : ""} class="input-control decrement-button" onclick="global.cart.updateQuantity('${item_id}','${size}',-1,this)"> <i class="fa-solid fa-minus"></i> </button>
                             <div class="quantity-container">
-                                <input onchange="global.cart.updateQuantity('${item_id}','${size}',this.value - global.cart.items['${item_id}']['${size}'])" class="target-quantity" type="number" class="form-control text-center input-qty bg-white" style="border: none;" value="${this.items[item_id][size]}">
+                                <input onchange=" global.cart.updateQuantity('${item_id}','${size}',parseInt(this.value || 1) - global.cart.items['${item_id}']['${size}'])" type="number" class="target-quantity border-0" value="${parseInt(this.items[item_id][size])}">
                             </div> 
-                            <button class="input-control" onclick=global.cart.updateQuantity('${item_id}','${size}',1)> <i class="fa-solid fa-plus"></i> </button>
+                            <button class="input-control" onclick="global.cart.updateQuantity('${item_id}','${size}',1,this.previousElementSibling.previousElementSibling)"> <i class="fa-solid fa-plus"></i> </button>
                         </div>
                         <button class="trash" onclick="global.cart.removeItem('${item_id}','${size}')"><i class="fa-regular fa-trash-can"></i></button>
                     </div>
@@ -275,6 +280,70 @@ function inputCart() {
     cart.display();
 
 }
+
+
+function inputSearch() {
+    const searchElement = document.querySelector("#search");
+    const shadow = document.querySelector("#shadow");
+    global.showSearchElement = function() {
+        searchElement.classList.remove("hide");
+        shadow.classList.remove("hide");
+        document.querySelector("#search .search-input input").focus();
+    }
+    global.hideSearchElement = function() {
+        searchElement.classList.add("hide");
+        shadow.classList.add("hide");
+    }
+
+    global.search = function(target) {
+        const search_output = document.querySelector("#search .search-output");
+        if (target == "") {
+            search_output.classList.add("hide");
+            return;
+        } else search_output.classList.remove("hide");
+
+        const results = global.all_products.filter(product => {
+            return (new RegExp(target.toLowerCase())).test(product.name.toLowerCase());
+        });
+        
+        if (results.length == 0) {
+            search_output.classList.add("hide");
+            return;
+        } else search_output.classList.remove("hide");
+
+        const output_container = document.querySelector("#search .search-output");
+        let outputs = ``;
+        results.forEach(result => {
+            const id = global.all_products.indexOf(result);
+            outputs += `   
+            <a href="/Strap_ItemInfo.html?id=${id}">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="${result.image}" width="100%" alt="">
+                    </div>
+                    <div class="col-9   ">
+                        <div>${result.name}</div>
+                    </div>
+                </div>
+            </a> 
+            `;
+        })
+        output_container.innerHTML = outputs;
+    }
+}
+
+
+//hide cart when not interacting with it
+window.addEventListener("click",function(event) {
+    const cart = document.getElementById("Cart");
+    if (!cart.classList.contains("hide")) {
+        const shadow = document.getElementById("shadow");
+        if (event.target == shadow) {
+            global.hideCartElement();
+            global.hideSearchElement();
+        } 
+    }
+});
 
 /*
     *********************************************************

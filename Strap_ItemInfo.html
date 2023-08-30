@@ -71,18 +71,7 @@
                 <div class="col-7">
                         <img src="img/strap t4.jpg" alt="" width="100%" id="main-image">
                     <div class="other-display">
-                       <!--  <div class="col-3">
-                            <img src="img/strap t4.jpg" class="thumbnail" id="image-1" width="100%">
-                        </div>
-                        <div class="col-3">
-                            <img src="img/strap t4 details 3.jpg" class="thumbnail" id="image-2" width="100%">
-                        </div>
-                        <div class="col-3">
-                            <img src="img/strap t4 details.jpg" class="thumbnail" id="image-3" width="100%">
-                        </div>
-                        <div class="col-3">
-                            <img src="img/strap t4 details 2.jpg" class="thumbnail" id="image-3" width="100%">
-                        </div> -->
+                
                     </div>
                 </div>
                 <div class="col-5 position-relative">
@@ -102,10 +91,10 @@
                     <br><br><br>
                     <p>Quantity</p>
                     <div class="col-4">
-                        <div class="input-group quantity mb-3">
+                        <div class="input-group quantity mb-3 info-quantity">
                             <button class="input-control" disabled> <i class="fa-solid fa-minus"></i> </button>
                             <div class=quantity-container>
-                                <input id="quantity" type="number" style="border: none;" value="1">
+                                <input id="quantity" class="target-quantity" type="number" style="border: none;" onchange="this.value = parseInt(this.value) || 1" value="1">
                             </div>
                             <button class="input-control"> <i class="fa-solid fa-plus"></i> </button>
                         </div>

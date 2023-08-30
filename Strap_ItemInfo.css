@@ -97,7 +97,7 @@
     color: white;
     transition: 0.3s;
 }
-
+    
 #sizes button:hover {
     background-color: black;
     color: white;
@@ -134,14 +134,14 @@
     background-color: black;
 }
 
-#quantity , .target-quantity {
+.target-quantity {
     width: 100%;
     height: 100%;
     outline: none;
     text-align: center;
 }
 
-#quantity:focus , .target-quantity:focus   {
+.target-quantity:focus   {
     border: 1px solid black;
     outline: 1px solid black;
     box-shadow: 0 0 0 5px white;
@@ -149,14 +149,14 @@
 }
 
 /* Chrome, Safari, Edge, Opera */
-#quantity::-webkit-outer-spin-button,
-#quantity::-webkit-inner-spin-button {
+.target-quantity::-webkit-outer-spin-button,
+.target-quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-#quantity[type=number] {
+.target-quantity[type=number] {
   -moz-appearance: textfield;
 }       
 
@@ -381,4 +381,41 @@
 #Cart .not-empty h3{
     padding-bottom: 20px;
     border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+#user-form {
+    display: flex;
+    justify-content: center;
+}
+
+#user-form > .container{
+    max-width: 900px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    border: 1px solid black;
+    padding: 0;
+    /* background-color: black ; */
+}
+
+#user-form > .container > * {
+    flex: 1;
+}
+
+#user-form > .container .image {
+    background: url(./img/skatewall.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#user-form  .container form {
+    
+}
+
+#user-form  .container form .container {
+    width: 80%;
+}
+
+#user-form  .container form input {
+    width: 100%;
 }
