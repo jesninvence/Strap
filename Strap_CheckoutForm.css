@@ -4,13 +4,18 @@
     border: none;
     background-color: black;
     color: white;
+    text-align: center;
+}
+
+.proinfo a {
+  text-decoration: none;
 }
 
 .container .proceed:hover {
-    transition: 0.7s;
-    background-color: white;
-    color: black;
-    box-shadow: 0 0 0 1px black;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 0 1px black;
+  transition: 0.7s;
 }
 
 .container .proceed i {
@@ -151,4 +156,69 @@
   0% { transform: rotate(0deg) }
   100% { transform: rotate(360deg) }
 }
- 
+
+
+.items .total-ship {
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+}
+
+.container-2 {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.track:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 0 1px black;
+  transition: 0.7s;
+}
+
+.done {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.done:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 0 1px black;
+  transition: 0.7s;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.note {
+  color: #5c5c5c;
+}
+
+.advice {
+  color: #5c5c5c;
+}
+
+.title {
+  color: #747474;
+}
