@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Lilita+One&family=Open+Sans:wght@300&family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Lilita+One&family=Titan+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" integrity="sha512-ur3bvcsoBMm1IdHaX7qza+XM3y/16yPN7RV7BxmdEAxkMf32hET4V2XPqGF7vaB35aYvFAT/9vOb4M5zck+eUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Strap_User.css">
+    <title>User - STRAP - Checkout</title>
+    <link rel="icon" type="" href="img/strap logo 2.png">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-black sticky-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navigationExercise10">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white md" href="Strap.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="Strap_shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="Strap_Collections.html">Collections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="Strap_Blogs.html">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="Strap.Contact_Us.html">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-black" href=""><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></a>
+                </li>
+            </ul> -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-black" onclick="global.showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-regular fa-user" style="color: #ffffff;"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">My Account</a>
+                    <a href="#">My Purchase</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="header bg-black text-center">
+        <!-- <marquee><img src="img/getyourgrindright.jpg" alt="" width="30%"> <img src="img/strap logo 2.png" alt=""> <img src="img/strap logo 1.png" alt="" width="40%"></marquee> -->
+        <img src="img/strap logo 2.png" alt="" width="30%">
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="items">
+            <div class="row">
+                <div class="col-3">
+                    <button class="tabBtn" id="button-1">My Account</button>
+                    <button class="tabBtn" id="button-2">My Purchase</button>
+                </div>
+                <div class="col-9">
+                    <div class="tab-division active" id="division-1">
+                        <h5>My Account</h5>
+                        <br>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Email : Ju********@gmail.com</p>
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <p>Full Name : Juan Dela Cruz</p>
+                            </div>
+                            <div class="col-12">
+                                <p>Phone Number : 09*******78</p>
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <p>Address : Unit 5 Century Complex, Juana Osemiña St, Cebu City</p>
+                            </div>
+                            <div class="col-12">
+                                <p>Postal Code : 6000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-division" id="division-2">
+                        <h5>My Purchase</h5>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- <h5 class="text-center">YOUR ORDER WAS SHIPPED!</h5>
+                                <p class="text-center">Dear Juan.</p>
+                                <p class="advise text-center">We know you can't wait for your package to arrive. That is why you can track your order here:</p>
+                                <br>
+                                <div class="container-2">
+                                    <a href="https://www.jtexpress.ph/index/query/gzquery.html?bills=1635015099">Track package</a>
+                                </div>
+                                <br><br>
+                                <p class="note">Please note, it could take some time for the tracking information to show on the above.</p>
+                                <hr>
+                                <h5 class="text-center">YOUR ORDER NUMBER IS # ST-2132</h5>
+                                <p class="note">Aug 31, 2023</p>
+                                <br>
+                                <h5>SHIPPED ITEMS</h5>
+                                <hr> -->
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img src="img/strap t5.jpg" alt="" width="100%">
+                                    </div>
+                                    <div class="col-7">
+                                        <br>
+                                        <p class="details">Strap B Logo Brown Tee</p>
+                                        <p class="details">Price : ₱ 850.00</p>
+                                        <p class="details">Quantity : 1</p>
+                                        <p class="details">Tracking Number : ST-2134</p>
+                                        <p class="details">Place Order : Aug 30, 2023</p>
+                                        <a href="https://www.jtexpress.ph/index/query/gzquery.html?bills=1635015099" class="track">Track package</a>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img src="img/strap t2.jpg" alt="" width="100%">
+                                    </div>
+                                    <div class="col-7">
+                                        <br>
+                                        <p class="details">Strap B Logo Brown Tee</p>
+                                        <p class="details">Price : ₱ 850.00</p>
+                                        <p class="details">Quantity : 1</p>
+                                        <p class="details">Tracking Number : ST-2012</p>
+                                        <p class="details">Place Order : Aug 30, 2023</p>
+                                        <a href="https://www.jtexpress.ph/index/query/gzquery.html?bills=1635015099" class="track">Track package</a>
+                                    </div>
+                                    <div class="container-2">
+                                        <br>
+                                        <button class="view">View more</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="Strap_User.js"></script>
+</html>
