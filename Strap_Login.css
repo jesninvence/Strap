@@ -1,3 +1,38 @@
+.navbar{
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.navbar-nav li a {
+    position: relative;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1.7px;
+    padding: 0 !important;
+    margin: 0px 10px;
+}
+
+.navbar-nav li a:after {
+    content: "";
+    position: absolute;
+    background-color: rgba(185, 185, 185, 0.842);
+    height: 2px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.navbar-nav li a:hover {
+    color: #ffffff;
+}
+
+.navbar-nav li a:hover:after {
+    width: 100%;
+}
+
 /* **********Scroll Bar*********** */
 
 ::-webkit-scrollbar {
@@ -15,3 +50,73 @@
 }
 
 /* ***********Scroll Bar*********** */
+
+.as {
+    text-decoration-line: none;
+    color: rgba(218, 217, 217, 0.907);
+}
+
+.as:hover {
+    color: white;
+}
+
+#user-form  .container form .container {
+    width: 80%;
+}
+
+#user-form  .container form input {
+    width: 100%;
+}
+
+#user-form {
+    display: flex;
+    justify-content: center;
+}
+
+#user-form > .container{
+    max-width: 900px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    border: 1px solid black;
+    padding: 0;
+    /* background-color: black ; */
+}
+
+#user-form > .container > * {
+    flex: 1;
+}
+
+.acc {
+    font-weight: 400;
+}
+
+.container-2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.container-3 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.container-4 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.container-3 .create {
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+}
+
+.container-3 .create:hover {
+    transform: scale(1.01);
+    transition: 0.7s;
+}

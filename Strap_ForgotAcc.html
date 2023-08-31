@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Strap_ItemInfo.css">
+    <link rel="stylesheet" href="Strap_Login.css">
     <title>Login - Strap</title>
     <link rel="icon" type="" href="img/strap logo 2.png">
 </head>
@@ -69,21 +69,24 @@
     <br><br><br>
     <div id="user-form">
         <form action="">
-            <div class="container">
+            <div class="container-3">
                 <div class="row">
-                    <h1 class="text-center">Login</h1>
+                    <h1 class="acc text-center">Reset your password</h1>
+                    <p class="text-center">We will send you an email to reset your password</p>
                     <div class="col-12">
                         <br>
-                        <input type="text" class="w-100 p-2 mb-4" placeholder="Email">
-                        <input type="text" class="w-100 p-2 mb-2" placeholder="Password">
-                        <br>
-                        <a class="forgot" href="Strap_ForgotAcc.html">Forgot your password?</a>
-                        <br><br><br>
-                        <div class="container-1">
-                            <a class="sign-in mb-3" href="Strap_User.html">Sign in</a>
+                        <div class="container-4">
+                            <div class="col-6">
+                                <input type="text" class="w-100 p-2" placeholder="Email">
+                            </div>
                         </div>
-                        <div class="container-2">
-                            <a class="create" href="Strap_CreatAccount.html">Create account</a>
+                        <br><br>
+                        <div class="container-3">
+                            <a href="#" class="create">Submit</a>
+                        </div>
+                        <div class="container-3">
+                            <br><br>
+                            <a href="Strap_Login.html" class="text-black">Cancel</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +131,7 @@
         </div>
     </div>
 
-    <div class="hide" id="shadow">
+    <!-- <div class="hide" id="shadow">
     </div>
     <div id="Cart">
         <button class="close" onclick="global.hideCartElement()"><i class="fa-solid fa-xmark"></i></button>
@@ -154,7 +157,7 @@
             <a href="Strap_Collections.html">Continue shopping</a>
         </div>
         </div>
-    </div>
+    </div> -->
 </body>
 <script src="main.js"></script>
 <script src="Strap_CartForm.js"></script>
