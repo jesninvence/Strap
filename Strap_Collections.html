@@ -24,14 +24,31 @@
         <div class="container-fluid">
             <section class="header">
                 <img src="img/strap logo 2.png" alt="" width="35%">
+                <div class="small-navbar">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-black" onclick="global.showSearchElement()"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-black" onclick="global.showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-black" href="Strap_Login.html" type="button"><i class="fa-regular fa-user" style="color: #ffffff;"></i></i></a>
+                        </li>
+                    </ul>
+                    <button onclick="global.showMobileNavbar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button> 
+                </div>
             </section>
-            <!-- <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navigationExercise10">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="collapse navbar-collapse" id="navigationExercise10">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-white md" href="Strap.html">Home</a>
+                        <a class="nav-link text-white md" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Strap_shop.html">Shop</a>
@@ -47,17 +64,17 @@
                     </li>
                 </ul>
             </div>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto hide-sm">
                 <li class="nav-item">
-                    <a class="btn btn-black" href=""><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-black" onclick="global.showSearchElement()"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto hide-sm">
                 <li class="nav-item">
-                    <a class="btn btn-black" href="Strap_CartForm.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-black" onclick="global.showCartElement()"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto hide-sm">
                 <li class="nav-item">
                     <a class="btn btn-black" type="button" data-bs-toggle="modal" data-bs-target="#sampleModal1"><i class="fa-regular fa-user" style="color: #ffffff;"></i></i></a>
                 </li>
@@ -136,5 +153,73 @@
             </form>
         </div>
     </div>
+    <div class="hide" id="shadow">
+    </div>
+    <div class="hide" id="search">
+        <div class="search-input">
+            <input type="text" oninput="global.search(this.value)" required>
+            <div class="indicator">Search</div>
+            <button><i class="fa-solid fa-magnifying-glass" style="color: gray;"></i></button>
+            <div class="search-output hide">
+            </div>
+        </div>
+        <button class="close" onclick="global.hideSearchElement()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="Cart">
+        <button class="close" onclick="global.hideCartElement()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="not-empty">
+            <h3 class="text-center fs-2">Your cart</h3>
+            <div class="items">
+                
+            </div>
+            <div class="checkout">
+                <div>
+                    <div>
+                        <p >Subtotal</p>
+                        <p class="text-end total-price"><i class="fa-solid fa-peso-sign"></i> 0.00</p>
+                    </div>
+                    <a href="/Strap_CheckoutForm.html">Check out</a>
+                </div>
+            </div>
+        </div>
+        <div class="empty hide">
+            <div class="content">
+            <h3>Your cart is empty</h3>
+            <br>
+            <a href="Strap_Collections.html">Continue shopping</a>
+        </div>
+        </div>
+    </div>
+
+    <div id="mobile-navbar">
+        <button class="close" onclick="global.hideMobileNavbar()"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li>
+                <a href="/index.html">Home</a>
+            </li>
+            <li>
+                <a href="/Strap_shop.html">Shop</a>
+            </li>
+            <li class="current_at">
+                <a href="/Strap_Collections.html">Collections</a>
+            </li>
+            <li>
+                <a href="/Strap_Blogs.html">Blogs</a>
+            </li>
+            <li>
+                <a href="/Strap.Contact_Us.html">Contact Us</a>
+            </li>
+        </ul>
+        <div class="foot">
+            &copy;2023, STRAP
+            <img src="/img/strap black.png" width="30%" />
+        </div>
+    </div>
+
+    <!-- Lodirrr-->
+    <div id="loader-container" class="hide">
+        <span class="loader"></span>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -28,9 +28,44 @@
     }
 }
 
+.container .items p{
+    margin: 0;
+    margin-bottom: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+
+  .pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+.container .shipping {
+    box-shadow: 0 0 0 1px rgb(199, 199, 199);
+    padding: 15px 10px;
+}
+
+.shipping p {
+    margin: 0;
+}
+
+.container .proinfo a {
+    text-decoration: none;
+}
+
+.container .contact .title {
+    color: rgb(116, 116, 116);
+}
 
 #orders {
-    height: 80%;
+    flex: 1;
     overflow:hidden;
     overflow-y: scroll;
 }
@@ -65,33 +100,91 @@
     right: 20px;
 }
 
-.order-summary {
-    position: relative;
-}
-
-.sub-total-container{
-    height: 11.5%;
-    background-color: black;
-    color: white;
-    position: relative;
-    padding-left: 1.5em;
-}
-
-.sub-total-container .total {
-    position: absolute;
-    right: 1.5em;
-    top: 0;
-}
-
 .hide {
     display: none !important;
 }
 
+a.allowed-goto {
+    color: rgb(113, 113, 216);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cod-checkbox:disabled {
+    background-color: black;
+}
+
+.pagination_button {
+    cursor: pointer;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.items {
+   
+}
+
+.items .total-ship {
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+  }
+  
+  .container-2 {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  .track {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 30px;
+  }
+  
+  .track:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+    transition: 0.7s;
+  }
+  
+  .done {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 30px;
+  }
+  
+  .done:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px black;
+    transition: 0.7s;
+  }
+
+
+  
 #loader-container {
     position: fixed;
     width: 100%;
     height: 100vh;
     top: 0;
+    left: 0;
     background-color: black;
     z-index: 9999;
     display: flex;
@@ -151,4 +244,66 @@
   0% { transform: rotate(0deg) }
   100% { transform: rotate(360deg) }
 }
- 
+  
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .small-navbar {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 2em;
+}
+
+
+.header .small-navbar button {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    padding: .2em .4em;
+    padding-bottom: 0;
+}
+
+#mobile-navbar {
+    width: 100%;
+    height: 100vh;
+    background: white;
+    position: fixed;
+    top: 0;
+    transform: translateX();
+    z-index: 999;
+    transition: .2s;
+}
+
+#mobile-navbar ul{
+    margin-top: 7em;
+}
+
+#mobile-navbar li{
+    list-style: none;
+}
+
+#mobile-navbar li a{
+    text-decoration: none;
+    font-size: 4em;
+    font-family: inherit;
+    color: black;
+}
+
+#mobile-navbar .close {
+    position: absolute;
+    right: .5em;
+    font-size: 4em;
+    background: none;
+    border: none;
+}
+
+#header .small-navbar .navbar-nav a{
+    font-size: 0.65em;
+}

@@ -15,8 +15,25 @@ function transBar() {
             navigation.style.background = "transparent";
         }
     }
-
 }
+
+function addSwiper() {
+    const swiper = new Swiper('#product-swiped', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop : true,
+        slidesPerView: 1,
+        spaceBetween: 5,
+        freeMode: {
+            enabled: true,
+            sticky: true,
+        },
+        autoplay : {
+            delay : 2000
+        }
+      });
+}
+
 
 
 //setup the page
@@ -35,12 +52,13 @@ async function init() {
     global.all_products = products[0].concat(products[1]);
 
     inputCart();
+    addMobileNavbar();
     if (path != "/Strap_CheckoutForm.html" ) 
         inputSearch();
-    else displayCartCheckout();
+    else displayCheckout();
 
     setTimeout(() => {
-        loader.classList.add("hide")
+        loader.classList.add("hide");
     },500);
 
     switch(path) {
@@ -48,8 +66,10 @@ async function init() {
             const page = location.search.slice(1).split("=")[1];
             showProducts(page);
             break;
-        case "/Strap.html":
+        case "/index.html":
+        case "" :
             transBar();
+            addSwiper();
             break;
         case "/Strap_ItemInfo.html":
             const id = location.search.slice(1).split("=")[1];
@@ -72,12 +92,12 @@ async function showProducts(page = 1) {
                     ${product.soldout ? `<span class="tag"> Sold out </span>` : ""} 
                     <div class="card-body">
                         <h5 ${product.soldout ? `id="soldout"` : ""} class="card-title text-black">${product.name}</h5>
-                        <p class="card-price"><i class="fa-solid fa-peso-sign"></i> ${product.price} </p>
+                        <p class="card-price"><i class="fa-solid fa-peso-sign"></i> ${formatNumber(product.price)} </p>
                     </div>
                 </div>
             </div>
         `
-                    })
+     })
     product_display.innerHTML = result;
 }
 
@@ -140,7 +160,7 @@ async function displayInfo(id = 0) {
         product.soldout && product_name.classList.add("soldout-name");
 
         const product_price = document.querySelector(".item-info .infos .card-price");
-        product_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ` + product.price + ".00";
+        product_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ` + formatNumber(product.price);
 
         const large_image = document.querySelector(".product-details .col-12 img");
         large_image.src = product.large_image || "img/nothing.jpg";
@@ -257,12 +277,12 @@ function inputCart() {
                     </div>
                     <div class="col-8 position-relative">
                         <p class="tshirt-name">${product.name}</p>
-                        <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${product.price}</p>
+                        <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${formatNumber(product.price)}</p>
                         <p class="size">Size: ${size}</p>
                         <div class="input-group quantity mb-3">
                             <button ${this.items[item_id][size] == 1 ? 'disabled = "true"' : ""} class="input-control decrement-button" onclick="global.cart.updateQuantity('${item_id}','${size}',-1,this)"> <i class="fa-solid fa-minus"></i> </button>
                             <div class="quantity-container">
-                                <input onchange=" global.cart.updateQuantity('${item_id}','${size}',parseInt(this.value) - global.cart.items['${item_id}']['${size}'])" type="number" class="target-quantity border-0" value="${parseInt(this.items[item_id][size])}">
+                                <input onchange="this.value = parseInt(this.value) || 1; global.cart.updateQuantity('${item_id}','${size}',parseInt(this.value) - global.cart.items['${item_id}']['${size}'])" type="number" class="target-quantity border-0" value="${parseInt(this.items[item_id][size])}">
                             </div> 
                             <button class="input-control" onclick="global.cart.updateQuantity('${item_id}','${size}',1,this.previousElementSibling.previousElementSibling)"> <i class="fa-solid fa-plus"></i> </button>
                         </div>
@@ -275,7 +295,7 @@ function inputCart() {
         container.innerHTML = result;
 
         const total_price = document.querySelector("#Cart .checkout .total-price");
-        total_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ${this.total_price}.00`;
+        total_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ${formatNumber(this.total_price)}`;
         localStorage.setItem("cart-items",JSON.stringify(this.items));
         localStorage.setItem("cart-total-price",JSON.stringify(this.total_price));
     }  
@@ -300,10 +320,12 @@ function inputSearch() {
         searchElement.classList.remove("hide");
         shadow.classList.remove("hide");
         document.querySelector("#search .search-input input").focus();
+        document.body.style.overflow = "hidden";
     }
     global.hideSearchElement = function() {
         searchElement.classList.add("hide");
         shadow.classList.add("hide");
+        document.body.style.overflow = "";
     }
 
     global.search = function(target) {
@@ -333,7 +355,7 @@ function inputSearch() {
                         <img src="${result.image}" width="100%" alt="">
                     </div>
                     <div class="col-9   ">
-                        <div>${result.name}</div>
+                        <div ${result.soldout ? 'class="soldout-name"' : ""}>${result.name}</div>
                     </div>
                 </div>
             </a> 
@@ -359,9 +381,9 @@ function displayCartCheckout() {
                 </div>
                 <div class="col-8 position-relative item-description">
                     <p class="tshirt-name">${product.name}</p>
-                    <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${product.price}</p>
+                    <p class="price-1"><i class="fa-solid fa-peso-sign"></i> ${formatNumber(product.price)}</p>
                     <p class="size">Size: ${size}</p>
-                    <p class="total-price">P${product.price * items[item_id][size]}</p>
+                    <p class="total-price">₱${formatNumber(product.price * items[item_id][size])}</p>
                 </div>
             </div>
             `;
@@ -370,15 +392,148 @@ function displayCartCheckout() {
 
     container.innerHTML = results;
 
-    const sub_total = document.querySelector(".sub-total-container .total");
-    sub_total.innerHTML = `P${global.cart.total_price}.00`;
+    const amount = document.querySelector(".total-ship .amount");
+    amount.innerHTML = `₱${formatNumber(global.cart.total_price)}`;
+
+    const shipping_fee = document.querySelector(".total-ship .shipping_fee");
+    shipping_fee.innerHTML = "₱130.00";
+
+    const total = document.querySelector(".total-ship .total");
+    total.innerHTML = `₱${formatNumber(global.cart.total_price + 130)}`;
 }
 
+function displayCheckout() {
+    const checkoutForm = document.getElementById("checkout_form");
+    const shippingDetails = document.getElementById("shipping_details");
+    const paymentDetails = document.getElementById("payment_details");
+
+    const information_indicator = document.querySelector(".pagination .information-indicator");
+    const shipping_indicator = document.querySelector(".pagination .shipping-indicator");
+    const payment_indicator = document.querySelector(".pagination .payment-indicator");
+
+    global.gotoShipping = function(event) {
+        event.preventDefault();
+
+        const email = document.querySelector("#checkout_form .email_input");
+        const email_display = document.querySelector("#shipping_details .email_display");
+        email_display.innerHTML = email.value;
+
+        const first_name = document.querySelector("#checkout_form input[placeholder='First name']").value;
+        const last_name = document.querySelector("#checkout_form input[placeholder='Last name']").value;
+        const address = document.querySelector("#checkout_form input[placeholder='Address']").value;
+        const barangay = document.querySelector("#checkout_form input[placeholder='Barangay']").value;
+        const postal_code = document.querySelector("#checkout_form input[placeholder='Postal code']").value;
+        const city = document.querySelector("#checkout_form input[placeholder='City']").value;
+
+        const address_display = document.querySelector("#shipping_details .ship_to_display");
+        address_display.innerHTML = `${first_name} ${last_name} ${address} ${barangay} ${postal_code} ${city}`;
+
+        checkoutForm.classList.add("hide");
+        paymentDetails.classList.add("hide");
+        shippingDetails.classList.remove("hide");
+
+        activeIndicator(shipping_indicator,function() {
+            information_indicator.classList.add("allowed-goto");
+            shipping_indicator.classList.remove("allowed-goto");
+        });
+    }
+    global.gotoPayment = function(event) {
+        event.preventDefault();
+
+        const first_name = document.querySelector("#checkout_form input[placeholder='First name']").value;
+        const last_name = document.querySelector("#checkout_form input[placeholder='Last name']").value;
+        const address = document.querySelector("#checkout_form input[placeholder='Address']").value;
+        const barangay = document.querySelector("#checkout_form input[placeholder='Barangay']").value;
+        const postal_code = document.querySelector("#checkout_form input[placeholder='Postal code']").value;
+        const city = document.querySelector("#checkout_form input[placeholder='City']").value;
+
+        const address_display = document.querySelector("#payment_details .ship_to_display");
+        address_display.innerHTML = `${first_name} ${last_name} ${address} ${barangay} ${postal_code} ${city}`;
+
+        const email = document.querySelector("#checkout_form .email_input");
+        const email_display = document.querySelector("#payment_details .email_display");
+        email_display.innerHTML = email.value;
+
+        checkoutForm.classList.add("hide");
+        paymentDetails.classList.remove("hide");
+        shippingDetails.classList.add("hide");
+
+        activeIndicator(payment_indicator,function() {
+            shipping_indicator.classList.add("allowed-goto");
+        });
+    }
+    global.gotoCheckoutForm = function(event) {
+        event.preventDefault();
+        checkoutForm.classList.remove("hide");
+        paymentDetails.classList.add("hide");
+        shippingDetails.classList.add("hide");
+
+        activeIndicator(information_indicator,function() {
+            information_indicator.classList.remove("allowed-goto");
+            shipping_indicator.classList.remove("allowed-goto");
+        });
+    }
+
+    global.placeOrder = function() {
+        const first_name = document.querySelector("#checkout_form input[placeholder='First name']").value;
+        const order_number = generateRandomChars(7,"ww-nnnn");
+        const today_date = new Date();
+        const items_shipped_container = document.querySelector("#order-placed .items");
+
+        let items_shipped = ``;
+        for (let item_id in global.cart.items) {
+            const product = global.all_products[item_id];
+            for (let size in global.cart.items[item_id]) {
+                items_shipped += `
+                <div class="row">
+                    <div class="col-4">
+                        <img src="${product.image}" alt="" width="100%">
+                    </div>
+                    <div class="col-8 position-relative">
+                        <br>
+                        <p class="tshirt-name">${product.name}</p>
+                        <p class="price-1">${product.price}</p>
+                        <p>Quantity: ${global.cart.items[item_id][size]}</p>
+                        <p class="size">${size}</p>
+                    </div>
+                </div>
+                `;
+            }   
+        }
+        items_shipped_container.innerHTML = items_shipped;
+        
+        document.querySelector("#order-placed .today-date").innerHTML = `${numberToMonth(today_date.getMonth())} ${today_date.getDate()}, ${today_date.getFullYear()}`  ; 
+        document.querySelector("#order-placed .firstName").innerHTML = first_name;
+        document.querySelector("#order-placed .order_number").innerHTML = order_number;
+    }
+
+    function activeIndicator(indicator,callback) {
+        const active = document.querySelector(".pagination .active");
+        active.classList.remove("active");
+        indicator.classList.add("active");
+        callback();
+    }
+
+    displayCartCheckout();
+}
+
+function addMobileNavbar() {
+    const mobile_navbar = document.getElementById("mobile-navbar");
+    global.showMobileNavbar = function() {
+        mobile_navbar.style.transform = "translateX(0)";
+        document.body.style.overflow = "hidden";
+    }
+
+    global.hideMobileNavbar = function() {
+        mobile_navbar.style.transform = "translateX(-100%)";
+        document.body.style.overflow = "auto";
+    }
+}
 
 //hide cart when not interacting with it
 window.addEventListener("click",function(event) {
     const cart = document.getElementById("Cart");
-    if (!cart.classList.contains("hide")) {
+    if (cart && !cart.classList.contains("hide")) {
         const shadow = document.getElementById("shadow");
         if (event.target == shadow) {
             global.hideCartElement();
@@ -386,6 +541,7 @@ window.addEventListener("click",function(event) {
         } 
     }
 });
+
 
 /*
     *********************************************************
@@ -403,4 +559,29 @@ function updateQuantity(quantityElement,number,decrementBtn) {
     }
     quantity.value = Number(quantity.value) + number;
     if (quantity.value <= 0) quantity.value = 1;
+}
+
+function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + ".00";
+}
+
+function generateRandomChars(length,syntax) {
+    let chars = "";
+    syntax = syntax.split("");
+    for (let i = 0;i < length;i++) {
+        if (syntax[i] == "w") {
+            let uppercase = Math.random() * 1 > 0.5 ? 65 : 97;
+            let word = String.fromCharCode(uppercase + Math.floor(Math.random() * 26));
+            chars += word;
+        } else if (syntax[i] == "n") {
+            let number = Math.floor(Math.random() * 10);
+            chars += number;
+        } else chars += "-";
+    }
+    return chars;
+}
+
+function numberToMonth(number) {
+    let MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return MONTHS[number];
 }
