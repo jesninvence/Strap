@@ -653,8 +653,8 @@ function donePayment() {
 
 function gotoAccount() {
     const user = localStorage.getItem("logged-user");
-    if (!user) localStorage.assign("/Strap_Login.html");
-    else localStorage.assign("Strap_User.html");
+    if (!user) location.assign("/Strap_Login.html");
+    else location.assign("Strap_User.html");
 }
 /*
     *********************************************************
