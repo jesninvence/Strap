@@ -562,6 +562,40 @@
     transition: .2s;
 }
 
+.forgot {
+    color: black;
+}
+
+.container-1 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.sign-in {
+    background-color: black;
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    text-decoration: none;
+    padding: 10px 35px;
+    cursor: pointer;
+}
+
+.sign-in:hover {
+    transition: 0.7s;
+    transform: scale(1.01);
+}
+
+.container-2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.create {
+    color: black;
+}
+
 #mobile-navbar ul{
     margin-top: 7em;
     padding: 0;

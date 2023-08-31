@@ -271,7 +271,7 @@
                             <div class="row">
                                 <p>Choose Payment Method :</p>
                                 <div class="col-6">
-                                    <select class="credit-card-options" name="" id="" onchange="let cod_checkbox = document.querySelector('#payment_details .cod-checkbox'); if (this.value != 'none') cod_checkbox.classList.add('hide');else cod_checkbox.classList.remove('hide');" class="w-100 p-2">
+                                    <select class="credit-card-options" name="" id="" onchange="updatePaymentOption(this.value)" class="w-100 p-2">
                                         <option value="none">none</option>
                                         <option value="BPI">BPI</option>
                                         <option value="BDO">BDO</option>
@@ -281,7 +281,31 @@
                                         <option value="Credit card">Credit card</option>
                                     </select>
                                 </div>
+                                <div class="credit-card-info hide">
+
+                                    <div class="form-container">
+                                        <div class="field-container">
+                                            <label for="name">Name</label>
+                                            <input id="name" maxlength="20" type="text">
+                                        </div>
+                                        <div class="field-container">
+                                            <label for="cardnumber">Card Number</label>
+                                            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
+                                            <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink">
                                 
+                                            </svg>
+                                        </div>
+                                        <div class="field-container">
+                                            <label for="expirationdate">Expiration (mm/yy)</label>
+                                            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric">
+                                        </div>
+                                        <div class="field-container">
+                                            <label for="securitycode">Security Code</label>
+                                            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -329,22 +353,22 @@
                     <h5>SHIPPED ITEMS</h5>
                     <hr>
                     <div class="items">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="img/strap t5.jpg" alt="" width="100%">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="img/strap t5.jpg" alt="" width="100%">
+                                </div>
+                                <div class="col-8 position-relative">
+                                    <br>
+                                    <p class="tshirt-name">Strap Tshirt</p>
+                                    <p class="price-1">₱ 850.00</p>
+                                    <p>Quantity: 1</p>
+                                    <p class="size">X-LARGE</p>
+                                </div>
                             </div>
-                            <div class="col-8 position-relative">
-                                <br>
-                                <p class="tshirt-name">Strap Tshirt</p>
-                                <p class="price-1">₱ 850.00</p>
-                                <p>Quantity: 1</p>
-                                <p class="size">X-LARGE</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="done" href="index.html">Done</a>
+                    <a class="done" onclick="donePayment()" style="cursor: pointer;">Done</a>
                 </div>
             </div>
         </div>

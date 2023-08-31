@@ -1,6 +1,6 @@
 //global variables
 const global = {
-
+    accounts : {}
 }
 
 
@@ -51,6 +51,9 @@ async function init() {
     global.products = products;
     global.all_products = products[0].concat(products[1]);
 
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    global.accounts = accounts;
+
     inputCart();
     addMobileNavbar();
     if (path != "/Strap_CheckoutForm.html" ) 
@@ -60,6 +63,7 @@ async function init() {
     setTimeout(() => {
         loader.classList.add("hide");
     },500);
+    console.log(path)
 
     switch(path) {
         case "/Strap_shop.html":
@@ -74,6 +78,9 @@ async function init() {
         case "/Strap_ItemInfo.html":
             const id = location.search.slice(1).split("=")[1];
             displayInfo(id);
+            break;
+        case "/Strap_User.html" :
+            displayUser();
             break;
     }
 }
@@ -530,6 +537,84 @@ function addMobileNavbar() {
     }
 }
 
+function create_account() {
+    const first_name = document.querySelector("#user-form input[placeholder='First name']").value;
+    const last_name = document.querySelector("#user-form input[placeholder='Last name']").value;
+    const email = document.querySelector("#user-form input[placeholder='Email']").value;
+    const password = document.querySelector("#user-form input[placeholder='Password']").value;
+
+    global.accounts[email] = {
+        first_name,
+        last_name,
+        email,
+        password
+    }
+
+    localStorage.setItem("accounts",JSON.stringify(global.accounts));
+    location.assign("/Strap_Login.html");
+}
+
+function sign_in_account() {
+    const accounts = JSON.parse(localStorage.getItem("accounts"));
+    const email = document.querySelector("#user-form input[placeholder='Email']").value;
+
+    let user = accounts[email];
+    if (!user) {
+        alert("Email Not Found!");
+        return;
+    }
+
+    localStorage.setItem("logged-user",JSON.stringify(user));
+    location.assign("/Strap_User.html");
+}
+
+
+function displayUser() {
+    const user = JSON.parse(localStorage.getItem("logged-user"));
+    const ordered_items = user.ordered_items;
+    const ordered_items_display = document.querySelector("#ordered-items");
+
+    if (ordered_items && Object.keys(ordered_items).length == 0) {
+        document.querySelector("#not-ordered").classList.remove("hide");
+    } else {
+        ordered_items_display.classList.remove("hide");
+        document.querySelector("#not-ordered").classList.add("hide");
+
+        let result = ``;
+        for (let item_id in ordered_items) {
+            const product = global.all_products[item_id];
+            for (let size in ordered_items[item_id]) {
+                result += `
+                <div class="row">
+                    <div class="col-4">
+                        <img src="${product.image}" alt="" width="100%">
+                    </div>
+                    <div class="col-8 position-relative">
+                        <br>
+                        <p class="tshirt-name">${product.name}</p>
+                        <p class="price-1">₱${formatNumber(product.price)}</p>
+                        <p>Quantity: ${ordered_items[item_id][size]}</p>
+                        <p class="size">${size}</p>
+                    </div>
+                </div>
+                `;
+            }   
+        }
+        ordered_items_display.innerHTML = result;
+        
+    }
+
+    console.log(ordered_items)
+
+    document.querySelector("#user-details .first_name").innerHTML = user.first_name;
+    document.querySelector("#user-details .last_name").innerHTML = user.last_name;
+}
+
+function logOutUser() {
+    localStorage.removeItem("logged-user");
+    location.assign("/Strap_Login.html");
+}
+
 //hide cart when not interacting with it
 window.addEventListener("click",function(event) {
     const cart = document.getElementById("Cart");
@@ -542,6 +627,29 @@ window.addEventListener("click",function(event) {
     }
 });
 
+function updatePaymentOption(value) {
+    let cod_checkbox = document.querySelector('#payment_details .cod-checkbox'); 
+    const credit_card_info = document.querySelector(".credit-card-info");
+    if (value != 'none') {
+        cod_checkbox.classList.add('hide');
+        credit_card_info.classList.remove("hide")
+    }
+    else {
+        cod_checkbox.classList.remove('hide');
+        credit_card_info.classList.add("hide");
+    }
+}
+
+function donePayment() {
+    const user = JSON.parse(localStorage.getItem("logged-user"));
+    user.ordered_items = global.cart.items;
+    global.cart.items = {};
+    localStorage.removeItem("cart-items");
+    global.accounts[user.email] = user;
+    localStorage.setItem("accounts",JSON.stringify(global.accounts));
+    localStorage.setItem("logged-user",JSON.stringify(user));
+    location.assign("/index.html");
+}
 
 /*
     *********************************************************
