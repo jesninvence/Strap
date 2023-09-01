@@ -56,7 +56,7 @@ async function init() {
 
     inputCart();
     addMobileNavbar();
-    if (path != "/Strap_CheckoutForm.html" ) 
+    if (path != "./Strap_CheckoutForm.html" ) 
         inputSearch();
     else displayCheckout();
 
@@ -83,28 +83,28 @@ async function init() {
     } */
     const actions = [];
     actions.push([
-        "/Strap_shop.html",
+        "./Strap_shop.html",
         function() {
             const page = location.search.slice(1).split("=")[1];
             showProducts(page);
         }
     ]);
     actions.push([
-        ["/index.html",""],
+        ["./index.html",""],
         function() {
             transBar();
             addSwiper();
         }
     ]);
     actions.push([
-        "/Strap_ItemInfo.html",
+        "./Strap_ItemInfo.html",
         function() {
             const id = location.search.slice(1).split("=")[1];
             displayInfo(id);
         }
     ]);
     actions.push([
-        "/Strap_User.html",
+        "./Strap_User.html",
         function() {
             displayUser();
         }
@@ -205,7 +205,7 @@ async function displayInfo(id = 0) {
         product_price.innerHTML = `<i class="fa-solid fa-peso-sign"></i> ` + formatNumber(product.price);
 
         const large_image = document.querySelector(".product-details .col-12 img");
-        large_image.src = product.large_image || "img/nothing.jpg";
+        large_image.src = product.large_image || "./img/nothing.jpg";
 
         const related_container = document.getElementById("related_products");
         let result = ``;
@@ -214,7 +214,7 @@ async function displayInfo(id = 0) {
             result += `
             <div class="col-6 col-md-3">
                 <div class="card ${related_product.soldout && "soldout"} bg-white h-100">
-                    <a type="button" href="/Strap_ItemInfo.html?id=${products.indexOf(related_product)}"><img src="${related_product.image}" width="100%"></a>
+                    <a type="button" href="./Strap_ItemInfo.html?id=${products.indexOf(related_product)}"><img src="./${related_product.image}" width="100%"></a>
                     ${related_product.soldout ? `<span class="tag"> Sold out </span>` : ""}
                     <div class="card-body">
                         <h5 ${related_product.soldout ? `id="soldout"` : ""} class="card-title text-black">${related_product.name}</h5>
@@ -315,7 +315,7 @@ function inputCart() {
                 result += `
                 <div class="row">
                     <div class="col-4">
-                        <img src="${product.image}" alt="" width="100%">
+                        <img src="./${product.image}" alt="" width="100%">
                     </div>
                     <div class="col-8 position-relative">
                         <p class="tshirt-name">${product.name}</p>
@@ -394,7 +394,7 @@ function inputSearch() {
             <a href="/Strap_ItemInfo.html?id=${id}">
                 <div class="row">
                     <div class="col-3">
-                        <img src="${result.image}" width="100%" alt="">
+                        <img src="./${result.image}" width="100%" alt="">
                     </div>
                     <div class="col-9   ">
                         <div ${result.soldout ? 'class="soldout-name"' : ""}>${result.name}</div>
@@ -418,7 +418,7 @@ function displayCartCheckout() {
             results += `
             <div class="row">
                 <div class="col-4 image-container">
-                    <img src="${product.image}" alt="" width="100%">
+                    <img src="./${product.image}" alt="" width="100%">
                     <div class="quantity">${items[item_id][size]}</div>
                 </div>
                 <div class="col-8 position-relative item-description">
@@ -529,7 +529,7 @@ function displayCheckout() {
                 items_shipped += `
                 <div class="row">
                     <div class="col-4">
-                        <img src="${product.image}" alt="" width="100%">
+                        <img src="./${product.image}" alt="" width="100%">
                     </div>
                     <div class="col-8 position-relative">
                         <br>
@@ -586,7 +586,7 @@ function create_account() {
     }
 
     localStorage.setItem("accounts",JSON.stringify(global.accounts));
-    location.assign("/Strap_Login.html");
+    location.assign("./Strap_Login.html");
 }
 
 function sign_in_account() {
@@ -600,7 +600,7 @@ function sign_in_account() {
     }
 
     localStorage.setItem("logged-user",JSON.stringify(user));
-    location.assign("/Strap_User.html");
+    location.assign("./Strap_User.html");
 }
 
 
@@ -622,7 +622,7 @@ function displayUser() {
                 result += `
                 <div class="row">
                     <div class="col-4">
-                        <img src="${product.image}" alt="" width="100%">
+                        <img src="./${product.image}" alt="" width="100%">
                     </div>
                     <div class="col-8 position-relative">
                         <br>
@@ -647,7 +647,7 @@ function displayUser() {
 
 function logOutUser() {
     localStorage.removeItem("logged-user");
-    location.assign("/Strap_Login.html");
+    location.assign("./Strap_Login.html");
 }
 
 //hide cart when not interacting with it
@@ -683,13 +683,13 @@ function donePayment() {
     global.accounts[user.email] = user;
     localStorage.setItem("accounts",JSON.stringify(global.accounts));
     localStorage.setItem("logged-user",JSON.stringify(user));
-    location.assign("/index.html");
+    location.assign("./index.html");
 }
 
 function gotoAccount() {
     const user = localStorage.getItem("logged-user");
-    if (!user) location.assign("/Strap_Login.html");
-    else location.assign("Strap_User.html");
+    if (!user) location.assign("./Strap_Login.html");
+    else location.assign(".Strap_User.html");
 }
 /*
     *********************************************************
