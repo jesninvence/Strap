@@ -130,7 +130,7 @@ async function showProducts(page = 1) {
         result += `
             <div class="col-6 col-md-3">
                 <div class="card ${product.soldout && "soldout"} bg-white h-100">
-                    <a type="button" data-bs-toggle="modal" href="${`/Strap_ItemInfo.html?id=${i + (page - 1) * 20}`}" data-bs-target="#sampleModal1"><img src="${product.image}" width="100%"></a>
+                    <a type="button" href="./Strap_ItemInfo.html?id=${i + (page - 1) * 20}" data-bs-target="#sampleModal1"><img src="${product.image}" width="100%"></a>
                     ${product.soldout ? `<span class="tag"> Sold out </span>` : ""} 
                     <div class="card-body">
                         <h5 ${product.soldout ? `id="soldout"` : ""} class="card-title text-black">${product.name}</h5>
