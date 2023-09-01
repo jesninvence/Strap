@@ -52,7 +52,7 @@ async function init() {
     global.all_products = products[0].concat(products[1]);
 
     let accounts = JSON.parse(localStorage.getItem("accounts"));
-    global.accounts = accounts;
+    global.accounts = accounts || {};
 
     inputCart();
     addMobileNavbar();
@@ -65,15 +65,13 @@ async function init() {
     },500);
     console.log(path)
 
-    switch(path) {
+    /* switch(path) {
         case "/Strap_shop.html":
-            const page = location.search.slice(1).split("=")[1];
-            showProducts(page);
+            
             break;
         case "/index.html":
         case "" :
-            transBar();
-            addSwiper();
+            
             break;
         case "/Strap_ItemInfo.html":
             const id = location.search.slice(1).split("=")[1];
@@ -82,7 +80,44 @@ async function init() {
         case "/Strap_User.html" :
             displayUser();
             break;
+    } */
+    const actions = [];
+    actions.push([
+        "/Strap_shop.html",
+        function() {
+            const page = location.search.slice(1).split("=")[1];
+            showProducts(page);
+        }
+    ]);
+    actions.push([
+        ["/index.html",""],
+        function() {
+            transBar();
+            addSwiper();
+        }
+    ]);
+    actions.push([
+        "/Strap_ItemInfo.html",
+        function() {
+            const id = location.search.slice(1).split("=")[1];
+            displayInfo(id);
+        }
+    ]);
+    actions.push([
+        "/Strap_User.html",
+        function() {
+            displayUser();
+        }
+    ]);
+    for (let i = 0;i < actions.length;i++) {
+        let [page,action] = actions[i];
+        if ((Array.isArray(page) && page.some(name => (new RegExp(name)).test(path))) ||
+            (new RegExp(page)).test(path)) {
+                action();
+                break;
+        }
     }
+
 }
 
 //show the products in Shop 
