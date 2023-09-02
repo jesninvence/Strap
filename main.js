@@ -83,35 +83,35 @@ async function init() {
     } */
     const actions = [];
     actions.push([
-        "./Strap_shop.html",
+        "/Strap_shop.html",
         function() {
             const page = location.search.slice(1).split("=")[1];
             showProducts(page);
         }
     ]);
     actions.push([
-        ["./index.html",""],
+        ["/index.html","Strap/ "],
         function() {
             transBar();
             addSwiper();
         }
     ]);
     actions.push([
-        "./Strap_ItemInfo.html",
+        "/Strap_ItemInfo.html",
         function() {
             const id = location.search.slice(1).split("=")[1];
             displayInfo(id);
         }
     ]);
     actions.push([
-        "./Strap_User.html",
+        "/Strap_User.html",
         function() {
             displayUser();
         }
     ]);
     for (let i = 0;i < actions.length;i++) {
         let [page,action] = actions[i];
-        if ((Array.isArray(page) && page.some(name => (new RegExp(name)).test(path))) ||
+        if ((Array.isArray(page) && page.some(name => (new RegExp(`(${name})$`)).test(path))) ||
             (new RegExp(page)).test(path)) {
                 action();
                 break;
