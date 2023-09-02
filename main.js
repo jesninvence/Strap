@@ -90,7 +90,7 @@ async function init() {
         }
     ]);
     actions.push([
-        ["/index.html","Strap/ "],
+        ["/index.html","Strap/"],
         function() {
             transBar();
             addSwiper();
