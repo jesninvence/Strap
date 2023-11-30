@@ -43,7 +43,8 @@ async function init() {
     const loader = document.querySelector("#loader-container");
     loader.classList.remove("hide");
     //path name
-    const path = location.pathname;
+    const paths = location.pathname.split("/");
+    const path = paths[paths.length - 1];
 
     //fetch product
     const fetchProducts = await fetch("./products.json");
@@ -65,54 +66,38 @@ async function init() {
     },500);
     console.log(path)
 
-    /* switch(path) {
-        case "/Strap_shop.html":
-            
-            break;
-        case "/index.html":
-        case "" :
-            
-            break;
-        case "/Strap_ItemInfo.html":
-            const id = location.search.slice(1).split("=")[1];
-            displayInfo(id);
-            break;
-        case "/Strap_User.html" :
-            displayUser();
-            break;
-    } */
-    const actions = [];
+     const actions = [];
     actions.push([
-        "/Strap_shop.html",
+        "Strap_shop.html",
         function() {
             const page = location.search.slice(1).split("=")[1];
             showProducts(page);
         }
     ]);
     actions.push([
-        ["/index.html","Strap/"],
+        ["index.html","Strap",""],
         function() {
             transBar();
             addSwiper();
         }
     ]);
     actions.push([
-        "/Strap_ItemInfo.html",
+        "Strap_ItemInfo.html",
         function() {
             const id = location.search.slice(1).split("=")[1];
             displayInfo(id);
         }
     ]);
     actions.push([
-        "/Strap_User.html",
+        "Strap_User.html",
         function() {
             displayUser();
         }
     ]);
     for (let i = 0;i < actions.length;i++) {
         let [page,action] = actions[i];
-        if ((Array.isArray(page) && page.some(name => (new RegExp(`(${name})$`)).test(path))) ||
-            (new RegExp(page)).test(path)) {
+        if ((Array.isArray(page) && page.includes(path)) ||
+            (page == path)) {
                 action();
                 break;
         }
