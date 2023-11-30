@@ -26,6 +26,7 @@
         transform: translateX(100%);
         opacity: 0;
     }
+<<<<<<< HEAD
 }
 
 .container .items p{
@@ -388,3 +389,6 @@ a.allowed-goto {
     top: calc(50% - 17px);
     width: 60px;
 }
+=======
+}
+>>>>>>> master
